@@ -109,7 +109,7 @@ model.compile(loss='categorical_crossentropy', optimizer=simple_adam, metrics=['
 
 # 3. 训练模型
 b_size = 500
-max_epochs = 52 #这里应该是42，这里为了测试流水线，写成1
+max_epochs = 52
 print("Starting training ")
 h = model.fit(train_x, train_y, batch_size=b_size, epochs=max_epochs, shuffle=True, verbose=1)
 print("Training finished \n")
@@ -154,7 +154,7 @@ for i in ID_of_final_file:
     length = len(file_test[file_test['渔船ID']==i])
     for j in t_predicted_result_list[counter:counter + length]:
         tem_list.append(j)
-    if (Counter(tem_list).most_common(1)[0][1])/len(tem_list) >= 0.60 : #这个数字至关重要，0.62是一个估计的大概数字
+    if (Counter(tem_list).most_common(1)[0][1])/len(tem_list) >= 0.60 : #这个数字至关重要，0.60是一个估计的大概数字
         final_result_list_for_uploading.append(i) #预测对了的ID
         right_prediction.append(Counter(tem_list).most_common(1)[0][0])
     counter = counter + length
